@@ -1,0 +1,32 @@
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.header {
+    background-color: rgb(210, 221, 221);
+    width: 105vw;
+    height: 25vw;
+}
+
+.titleGame {
+    color: brown;
+    font-size: large;
+    font-style: italic;
+}
+
+@media(max-width: 300px) {
+    .header {
+        width: 90vw;
+        height: 50%;
+        float: left;
+    }
+    .titleGame {
+        font-size: 80%;
+    }
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618 - Copy.jpeg");
+    }
+}
