@@ -5,39 +5,75 @@ body {
 }
 
 .header {
-    background-color: rgb(210, 221, 221);
-    width: 144em;
-    height: 6em;
+    background-color: rgb(233, 227, 227);
+    border-radius: 10px;
+    opacity: 80%;
 }
 
 .titleGame {
-    color: brown;
-    font-size: large;
-    font-style: italic;
+    text-align: left;
+    font-weight: bold;
+}
+
+
+/* Text colors */
+
+.red-text {
+    color: #B6472C;
+}
+
+.green-text {
+    color: #64AC1D;
+}
+
+.orange-text {
+    color: #DD7429;
+}
+
+.yellow-text {
+    color: #CFD724;
 }
 
 @media screen and (min-width: 1024px) {
     .header {
-        width: 90vw;
-        height: 50%;
-        float: left;
+        width: 100%;
+        height: 10vw;
     }
     .titleGame {
-        font-size: 80%;
+        font-size: 6vw;
+        padding-left: 1vw;
     }
     body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618.jpeg");
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+    .header {
+        width: 100%;
+        height: 30vw;
+    }
+    .titleGame {
+        font-size: 13vw;
+        padding-left: 5vw;
+        padding-top: 2vw;
+    }
     body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618 - Copy.jpeg");
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
     }
 }
 
 @media screen and (max-width: 767px) {
+    .header {
+        width: 100%;
+        height: 45vw;
+    }
+    .titleGame {
+        font-size: 14vw;
+        text-align: center;
+        padding-top: 5vw;
+    }
     body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618 - Copy.jpeg");
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
     }
 }
