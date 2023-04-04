@@ -4,17 +4,12 @@ body {
 }
 
 header {
-	color: white;
 	text-align: center;
-    font-weight: bold;
-}
-
-main {
-	padding: 20px;
 }
 
 .title{
     font-size: 5.5vw;
+    font-weight: bold;
 }
 
 /* Text colors */
@@ -38,54 +33,18 @@ main {
 
 @media screen and (max-width: 767px) {
 	/* Phones */
-	
-	header {
-		font-size: 12vw;
-		padding: 10px;
-	}
-	
-	main {
-		padding: 10px;
-	}
-	
-	footer {
-		font-size: 24px;
-		padding: 10px;
-	}
+	.title{
+        font-size: 8vw;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px){
 	/* Tablets */
-	
-	header {
-		font-size: 20px;
-		padding: 5px;
-	}
-	
-	main {
-		padding: 5px;
-	}
-	
-	footer {
-		font-size: 20px;
-		padding: 5px;
-	}
+	.title{
+        font-size: 7vw;
+    }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px){
-	/* Tablets */
-	
-	header {
-		font-size: 20px;
-		padding: 5px;
-	}
-	
-	main {
-		padding: 5px;
-	}
-	
-	footer {
-		font-size: 20px;
-		padding: 5px;
-	}
+@media screen and (min-width: 1024px){
+	/* Desktop */
 }
