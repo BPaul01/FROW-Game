@@ -1,0 +1,91 @@
+body {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	background-color: #95C186
+}
+
+header {
+	color: white;
+	text-align: center;
+    font-weight: bold;
+}
+
+main {
+	padding: 20px;
+}
+
+.title{
+    font-size: 5.5vw;
+}
+
+/* Text colors */
+.red-text {
+    color: #B6472C;
+}
+
+.green-text{
+    color: #64AC1D;
+}
+
+.orange-text{
+    color: #DD7429;
+}
+
+.yellow-text{
+    color: #CFD724;
+}
+
+/* Responsive styles for different screen sizes */
+
+@media screen and (max-width: 767px) {
+	/* Phones */
+	
+	header {
+		font-size: 12vw;
+		padding: 10px;
+	}
+	
+	main {
+		padding: 10px;
+	}
+	
+	footer {
+		font-size: 24px;
+		padding: 10px;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+	/* Tablets */
+	
+	header {
+		font-size: 20px;
+		padding: 5px;
+	}
+	
+	main {
+		padding: 5px;
+	}
+	
+	footer {
+		font-size: 20px;
+		padding: 5px;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+	/* Tablets */
+	
+	header {
+		font-size: 20px;
+		padding: 5px;
+	}
+	
+	main {
+		padding: 5px;
+	}
+	
+	footer {
+		font-size: 20px;
+		padding: 5px;
+	}
+}
