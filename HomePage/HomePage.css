@@ -1,5 +1,4 @@
 body {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -7,8 +6,8 @@ body {
 
 .header {
     background-color: rgb(210, 221, 221);
-    width: 105vw;
-    height: 25vw;
+    width: 144em;
+    height: 6em;
 }
 
 .titleGame {
@@ -17,7 +16,7 @@ body {
     font-style: italic;
 }
 
-@media(max-width: 300px) {
+@media screen and (min-width: 1024px) {
     .header {
         width: 90vw;
         height: 50%;
@@ -26,6 +25,18 @@ body {
     .titleGame {
         font-size: 80%;
     }
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618.jpeg");
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618 - Copy.jpeg");
+    }
+}
+
+@media screen and (max-width: 767px) {
     body {
         background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("pexels-photo-6608618 - Copy.jpeg");
     }
