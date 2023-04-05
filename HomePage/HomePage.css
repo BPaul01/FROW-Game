@@ -1,79 +1,127 @@
-body {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-.header {
-    background-color: rgb(233, 227, 227);
-    border-radius: 10px;
-    opacity: 80%;
-}
-
-.titleGame {
-    text-align: left;
-    font-weight: bold;
-}
-
-
-/* Text colors */
-
-.red-text {
-    color: #B6472C;
-}
-
-.green-text {
-    color: #64AC1D;
-}
-
-.orange-text {
-    color: #DD7429;
-}
-
-.yellow-text {
-    color: #CFD724;
-}
-
-@media screen and (min-width: 1024px) {
-    .header {
-        width: 100%;
-        height: 10vw;
-    }
-    .titleGame {
-        font-size: 6vw;
-        padding-left: 1vw;
-    }
     body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
     }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+    
     .header {
-        width: 100%;
-        height: 30vw;
+        background-color: rgb(233, 227, 227);
+        border-radius: 10px;
+        opacity: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
+    
+    .button {
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+    }
+    
     .titleGame {
-        font-size: 13vw;
-        padding-left: 5vw;
-        padding-top: 2vw;
+        text-align: left;
+        font-weight: bold;
     }
-    body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .header {
-        width: 100%;
-        height: 45vw;
-    }
-    .titleGame {
-        font-size: 14vw;
+    
+    .ButtonsHeader {
         text-align: center;
-        padding-top: 5vw;
+        color: rgb(36, 32, 32);
+        align-self: flex-end;
     }
-    body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+    /*div.ButtonsHeader span.button {
+        text-decoration: underline;
+    }*/
+    
+    div.ButtonsHeader span.button.acasa {
+        text-decoration: underline;
     }
-}
+    /* Text Title colors */
+    
+    .red-text {
+        color: #B6472C;
+    }
+    
+    .green-text {
+        color: #64AC1D;
+    }
+    
+    .orange-text {
+        color: #DD7429;
+    }
+    
+    .yellow-text {
+        color: #CFD724;
+    }
+    /*Media queries*/
+    
+    @media screen and (min-width: 1024px) {
+        /*DESKTOP*/
+        .header {
+            width: 100%;
+            height: 10vw;
+        }
+        .titleGame {
+            font-size: 6vw;
+            padding-left: 1vw;
+        }
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+        }
+        .ButtonsHeader {
+            font-size: 2.5vw;
+        }
+        div.ButtonsHeader span.button {
+            padding: 1vw 1vw;
+            margin: 1vw 1vw;
+        }
+    }
+    
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        /*IPad*/
+        .header {
+            width: 100%;
+            height: 30vw;
+        }
+        .titleGame {
+            font-size: 13vw;
+            padding-left: 5vw;
+            padding-top: 2vw;
+        }
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+        }
+        .ButtonsHeader {
+            /*justify-self: center;*/
+            font-size: 5vw;
+        }
+        div.ButtonsHeader span.button {
+            padding: 2vw 2vw;
+            margin: 2vw 2vw;
+        }
+    }
+    
+    @media screen and (max-width: 767px) {
+        /*Phone*/
+        .header {
+            width: 100%;
+            height: 45vw;
+            justify-content: center;
+        }
+        .titleGame {
+            font-size: 14vw;
+            text-align: center;
+            padding-top: 5vw;
+        }
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+        }
+        .ButtonsHeader {
+            font-size: 6vw;
+        }
+        div.ButtonsHeader span.button {
+            padding: 2vw 2vw;
+            margin: 2vw 2vw;
+        }
+    }
