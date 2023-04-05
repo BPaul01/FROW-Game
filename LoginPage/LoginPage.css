@@ -1,15 +1,55 @@
 body {
-	font-family: Georgia, 'Times New Roman', Times, serif;
 	background-color: #95C186
 }
 
 header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 	text-align: center;
 }
 
-.title{
+.game-title{
     font-size: 5.5vw;
     font-weight: bold;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.main-padding{
+    background-color: #BCA265;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: fit-content;
+    padding: 5vw;
+    border-radius: 3vw;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    
+    padding-inline: 5vw;
+    padding-bottom: 5vw;
+}
+
+.login-title{
+    color: white;
+
+    text-align: right;
+    font-size: 5.5vw;
+    font-weight: bold;
+}
+
+.fruits{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 3vw;
 }
 
 /* Text colors */
@@ -33,14 +73,14 @@ header {
 
 @media screen and (max-width: 767px) {
 	/* Phones */
-	.title{
+	.game-title{
         font-size: 8vw;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px){
 	/* Tablets */
-	.title{
+	.game-title{
         font-size: 7vw;
     }
 }
