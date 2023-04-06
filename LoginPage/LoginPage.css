@@ -14,7 +14,9 @@ header {
 
 main{
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+
+    justify-content: space-around;
 }
 
 .main-padding{
@@ -27,28 +29,67 @@ main{
     width: fit-content;
     padding: 5vw;
     border-radius: 3vw;
+
+    /*margin-top TODO responsive*/
 }
 
 .content{
     display: flex;
     flex-direction: column;
-    
+
     padding-inline: 5vw;
     padding-bottom: 5vw;
 }
 
 .login-title{
+    font-family:Arial, Helvetica, sans-serif;
     color: white;
 
-    text-align: right;
+    text-align: center;
     font-size: 5.5vw;
     font-weight: bold;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    font-size: 3vw;
+    padding: 3vw;
+    border-radius: 3vw;
+    width: 50vw;
+    border: solid gray;
+}
+
+.button{
+    background-color: white;
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    font-size: larger;
+    color: green;
+    
+    padding: 2vw;
+    border-radius: 3vw;
+    border: solid white;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #85c149;
+    color: white;
 }
 
 .fruits{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
+    font-size: 6vw;
+
     margin: 3vw;
 }
 
