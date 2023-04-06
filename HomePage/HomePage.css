@@ -17,8 +17,17 @@
         border: none;
         text-decoration: none;
         display: inline-block;
+        transition-duration: 1s;
         cursor: pointer;
     }
+    
+    div.ButtonsHeader .button:hover {
+        background-color: #95C186;
+        border-radius: 10px;
+    }
+    /*div.login-container .button:hover{
+        background-color: #B6472C;
+    }*/
     
     .titleGame {
         text-align: left;
