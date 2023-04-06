@@ -1,0 +1,233 @@
+    body {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    
+    .header {
+        background-color: rgb(233, 227, 227);
+        border-radius: 10px;
+        opacity: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .button {
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 1s;
+        cursor: pointer;
+    }
+    
+    div.ButtonsHeader .button:hover {
+        background-color: #95C186;
+        border-radius: 10px;
+    }
+    /*div.login-container .button:hover{
+        background-color: #B6472C;
+    }*/
+    
+    .titleGame {
+        text-align: left;
+        font-weight: bold;
+    }
+    
+    .ButtonsHeader {
+        text-align: center;
+        color: rgb(36, 32, 32);
+        align-self: flex-end;
+    }
+    /*div.ButtonsHeader span.button {
+        text-decoration: underline;
+    }*/
+    
+    div.ButtonsHeader a.button.acasa {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+    /* Text Title colors */
+    
+    .red-text {
+        color: #B6472C;
+    }
+    
+    .green-text {
+        color: #64AC1D;
+    }
+    
+    .orange-text {
+        color: #DD7429;
+    }
+    
+    .yellow-text {
+        color: #CFD724;
+    }
+    
+    main {
+        /*background-color: #B6472C;*/
+        display: flex;
+        justify-content: center;
+    }
+    
+    .login-container {
+        background: rgba(233, 227, 227, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border-radius: 10px;
+        margin: 10vw;
+    }
+    
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #95C186;
+        align-items: center;
+        border-radius: 10px;
+        color: #B6472C;
+        font-weight: bold;
+        transition-duration: 0.3s;
+    }
+    
+    .button-container:hover {
+        background-color: #B6472C;
+        opacity: 80%;
+        color: white;
+    }
+    
+    .conect {
+        margin-left: 10px;
+    }
+    /*Media queries*/
+    
+    @media screen and (min-width: 1024px) {
+        /*DESKTOP*/
+        .header {
+            width: 100%;
+            height: 10vw;
+        }
+        .titleGame {
+            font-size: 6vw;
+            padding-left: 1vw;
+        }
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+        }
+        .ButtonsHeader {
+            font-size: 2.5vw;
+        }
+        div.ButtonsHeader a.button {
+            padding: 1vw 1vw;
+            margin: 1vw 1vw;
+        }
+        main {
+            left: 10vw;
+            right: 10vw;
+        }
+        div.button-container img {
+            width: 6vw;
+            height: auto;
+        }
+        .login-container {
+            width: 40vw;
+            height: 20vw;
+            margin: 10vw;
+        }
+        .button-container {
+            width: 35vw;
+            height: 13vw;
+            margin: 2vw;
+            font-size: 2.5vw;
+        }
+    }
+    
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        /*IPad*/
+        .header {
+            width: 100%;
+            height: 30vw;
+        }
+        .titleGame {
+            font-size: 13vw;
+            padding-left: 5vw;
+            padding-top: 2vw;
+        }
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+        }
+        .ButtonsHeader {
+            /*justify-self: center;*/
+            font-size: 5vw;
+        }
+        div.ButtonsHeader a.button {
+            padding: 2vw 2vw;
+            margin: 2vw 2vw;
+        }
+        main {
+            left: 10vw;
+            right: 10vw;
+        }
+        div.button-container img {
+            width: 15vw;
+            height: auto;
+        }
+        .login-container {
+            width: 60vw;
+            height: 40vw;
+            margin: 18vw;
+            margin-top: 20vw;
+        }
+        .button-container {
+            width: 50vw;
+            height: 13vw;
+            margin: 3vw;
+            font-size: 5vw;
+        }
+    }
+    
+    @media screen and (max-width: 767px) {
+        /*Phone*/
+        .header {
+            width: 100%;
+            height: 45vw;
+            justify-content: center;
+        }
+        .titleGame {
+            font-size: 14vw;
+            text-align: center;
+            padding-top: 5vw;
+        }
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+        }
+        .ButtonsHeader {
+            font-size: 6vw;
+        }
+        div.ButtonsHeader a.button {
+            padding: 2vw 2vw;
+            margin: 2vw 2vw;
+        }
+        main {
+            left: 5vw;
+            right: 5vw;
+        }
+        div.button-container img {
+            width: 15vw;
+            height: auto;
+        }
+        .login-container {
+            width: 75vw;
+            height: 50vw;
+            margin: 2vw;
+            margin-top: 35vw;
+        }
+        .button-container {
+            width: 70vw;
+            height: 13vw;
+            margin: 3vw;
+            font-size: 6vw;
+        }
+    }
