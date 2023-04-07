@@ -1,0 +1,226 @@
+body {
+	background-color: #95C186
+}
+
+header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+	text-align: center;
+}
+
+.game-title{
+    font-weight: bold;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+}
+
+.main-padding{
+    background-color: #BCA265;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: fit-content;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-title{
+    font-family:Arial, Helvetica, sans-serif;
+    color: white;
+
+    text-align: center;
+    font-weight: bold;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    text-align: center;
+
+    border: solid rgb(156, 156, 156);
+}
+
+.button{
+    background-color: white;
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    font-size: larger;
+
+    color: green;
+
+    border: solid green;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #85c149;
+    color: white;
+}
+
+.fruits{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: default;
+}
+
+/* Text colors */
+.red-text {
+    color: #B6472C;
+}
+
+.green-text{
+    color: #64AC1D;
+}
+
+.orange-text{
+    color: #DD7429;
+}
+
+.yellow-text{
+    color: #CFD724;
+}
+
+@media screen and (max-width: 767px) {
+	/* Phones */
+
+    .game-title{
+        font-size: 10vw;
+    }
+
+    .main-padding{
+        margin-top: 10vh;
+        padding: 2vw;
+        border-radius: 3vw;
+    }
+
+    .content{
+        padding-inline: 2vw;
+        padding-bottom: 2vw;
+    }
+
+    .login-title{
+        font-size: 6.5vw;
+    }
+
+    input{
+        font-size: 4vw;
+        padding: 3vw;
+        width: 45vw;
+
+        border-radius: 3vw;
+        border: solid rgb(156, 156, 156);
+    }
+
+    .button{
+        font-size: 4vw;
+        padding: 2vw;
+        border-radius: 3vw;
+    }
+
+    .fruits{
+        font-size: 8vw;
+        padding: 2vw;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+	/* Tablets */
+
+    .game-title{
+        font-size: 9vw;
+    }
+
+    .main-padding{
+        margin-top: 12.5vh;
+        padding: 2vw;
+        border-radius: 3vw;
+    }
+
+    .content{
+        padding-inline: 2vw;
+        padding-bottom: 3vw;
+    }
+
+    .login-title{
+        font-size: 6.5vw;
+    }
+
+    input{
+        font-size: 3vw;
+        padding: 2.5vw;
+        width: 45vw;
+
+        border-radius: 3vw;
+    }
+
+    .button{
+        font-size: 3vw;
+
+        padding: 2.5vw;
+        border-radius: 3vw;
+        border: solid 0.5vw;
+    }
+
+    .fruits{
+        font-size: 7vw;
+        padding: 2vw;
+    }
+}
+
+@media screen and (min-width: 1024px){
+	/* Desktop */
+
+    .game-title{
+        font-size: 5vw;
+    }
+
+    .main-padding{
+        margin-top: 3vh;
+        padding: 1.5vw;
+        border-radius: 3vw;
+    }
+
+    .content{
+        padding-inline: 2vw;
+    }
+
+    .login-title{
+        font-size: 3.5vw;
+    }
+
+    input{
+        font-size: 2vw;
+        padding: 1.5vw;
+        width: 45vw;
+
+        border-radius: 3vh;
+    }
+
+    .button{
+        font-size: 2vw;
+
+        padding: 1.5vw;
+        border-radius: 3vw;
+        border: solid;
+    }
+
+    .fruits{
+        font-size: 4.5vw;
+        padding: 1.5vw;
+    }
+}
