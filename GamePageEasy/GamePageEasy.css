@@ -1,0 +1,234 @@
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #6d9b5d;
+}
+
+.header {
+    background-color: rgb(233, 227, 227);
+    border-radius: 10px;
+    opacity: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.button {
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 1s;
+    text-align: center;
+    cursor: pointer;
+}
+
+.buttonHeader {
+    background-color: #B6472C;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    border-width: 3px;
+    border-color: #331a13;
+    border-radius: 10px;
+    box-shadow: 0 6px #884331;
+    align-self: center;
+}
+
+.buttonHeader:hover {
+    background-color: #CFD724;
+    border-color: #797e27;
+    color: black;
+}
+
+.buttonHeader:active {
+    background-color: #CFD724;
+    box-shadow: 0 10px #331a13;
+    /*transform: translateY(4px);*/
+}
+
+.titleGame {
+    text-align: left;
+    font-weight: bold;
+}
+
+.ButtonsHeader {
+    text-align: center;
+    color: rgb(36, 32, 32);
+    align-self: flex-end;
+}
+
+div.ButtonsHeader a.button.ajutor {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+/* Text Title colors */
+
+.red-text {
+    color: #B6472C;
+}
+
+.green-text {
+    color: #64AC1D;
+}
+
+.orange-text {
+    color: #DD7429;
+}
+
+.yellow-text {
+    color: #CFD724;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.containterImage {
+    background-color: #CF833C;
+    border-radius: 15px;
+    color: #331a13;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.containterImage h2 {
+    color: black;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/*Media queries*/
+
+
+/*DESKTOP*/
+
+@media screen and (min-width: 1024px) {
+    .header {
+        width: 100%;
+        height: 10vw;
+    }
+    .titleGame {
+        font-size: 6vw;
+        padding-left: 1vw;
+    }
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+    }
+    .ButtonsHeader {
+        font-size: 2.5vw;
+    }
+    div.ButtonsHeader a.button {
+        padding: 1vw 1vw;
+        margin: 1vw 1vw;
+    }
+    .buttonHeader {
+        width: 15vw;
+        height: 4vw;
+        margin-right: 8vw;
+    }
+    main {
+        left: 10vw;
+        right: 10vw;
+        margin-top: 5vw;
+    }
+    .containterImage {
+        width: 48vw;
+        height: fit-content;
+    }
+    .containterImage img {
+        width: 45;
+        height: auto;
+        border-radius: 15px;
+        margin: 0vw 2vw 2vw 2vw;
+    }
+}
+
+
+/*IPad*/
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .header {
+        width: 100%;
+        height: 30vw;
+        justify-content: center;
+    }
+    .titleGame {
+        font-size: 13vw;
+        padding-left: 5vw;
+        padding-top: 2vw;
+    }
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+    }
+    .buttonHeader {
+        justify-self: center;
+        width: 28vw;
+        height: 8vw;
+        margin-bottom: 3vw;
+        font-size: 4vw;
+    }
+    main {
+        left: 10vw;
+        right: 10vw;
+        margin-top: 5vw;
+        flex-direction: column;
+        align-content: space-around;
+    }
+    .containterImage {
+        width: 78vw;
+        height: fit-content;
+        order: 3;
+    }
+    .containterImage img {
+        width: 70;
+        height: auto;
+        border-radius: 15px;
+        margin: 0vw 2vw 2vw 2vw;
+    }
+}
+
+
+/*Phone*/
+
+@media screen and (max-width: 767px) {
+    .header {
+        width: 100%;
+        height: 45vw;
+        justify-content: center;
+    }
+    .titleGame {
+        font-size: 14vw;
+        text-align: center;
+        padding-top: 5vw;
+    }
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+    }
+    .buttonHeader {
+        /*margin: 2vw 2vw;*/
+        width: 35vw;
+        height: 10vw;
+        margin-bottom: 5vw;
+        font-size: 5vw;
+    }
+    main {
+        left: 10vw;
+        right: 10vw;
+        flex-direction: column;
+        align-content: space-around;
+    }
+    .containterImage {
+        width: 80vw;
+        height: fit-content;
+        order: 3;
+    }
+}
