@@ -40,6 +40,7 @@ div.ButtonsHeader .button:hover {
     text-align: center;
     color: rgb(36, 32, 32);
     align-self: flex-end;
+    font-family: 'Brush Script MT', cursive;
 }
 
 
@@ -88,6 +89,17 @@ main {
 
 .cuvinte-evidentiate {
     font-weight: bold;
+}
+
+h3 {
+    font-family: 'Brush Script MT', cursive;
+    color: #571504;
+}
+
+.text-container p,
+li,
+span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'Gill Sans', sans-serif;
 }
 
 
