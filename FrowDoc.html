@@ -129,6 +129,100 @@
                 oferi un aspect vizual plăcut și o atmosferă prietenoasă.
               </p>
           </section>
+            
+            <section>
+            <h3>Design Responsive</h3> 
+            <p>
+              Pentru a oferi o experiență cât mai plăcută pe toate platformele 
+              și toate tipurile de dispozitive am folosit media queries și flex. 
+              În continuare am atașat o parte ce sperăm că încapsulează cel 
+              mai bine cum am implementat designul dorit în tot proiectul.
+            </p>
+
+            <pre>
+              <code>
+                .main1 {
+                  display: flex;
+                }
+              </code>
+            </pre>
+
+            <pre>
+              <code>
+                @media screen and (max-width: 767px) {
+                  .main1 {
+                    left: 10vw;
+                    right: 10vw;
+                    height: 100vw;
+                    margin-top: 5vw;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+              }
+              </code>
+            </pre>
+
+            <pre>
+              <code>
+                @media screen and (min-width: 768px) and (max-width: 1023px){
+                  .main1 {
+                    left: 10vw;
+                    right: 10vw;
+                    height: 90vw;
+                    margin-top: 5vw;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+              }
+              </code>
+            </pre>
+
+            <pre>
+              <code>
+                @media screen and (min-width: 1024px){
+                  .main1 {
+                    left: 10vw;
+                    right: 10vw;
+                    margin-top: 5vw;
+                    flex-direction: row;
+                    align-content: center;
+                    align-items: center;
+                    justify-content: space-around;
+                }
+              }
+              </code>
+            </pre>
+
+            <p>
+              Pentru partea de interacțiune, butoanele sunt făcute ca să ofere un 
+              aspect plăcut, rotunjit, și sunt amplasate în așa fel încât să fie 
+              ușor de observat în cadrul paginii.
+            </p>
+
+            <pre>
+              <code>
+                .button{
+                  background-color: white;
+
+                  font-weight: bolder;
+                  font-size: larger;
+
+                  color: green;
+
+                  border: solid green;
+                  transition-duration: 0.5s;
+                  cursor: pointer;
+                  }
+
+                  .button:hover{
+                      background-color: #85c149;
+                      color: white;
+                  }
+              </code>
+            </pre>
+        </section>
         </section>
     </body>
 </html>
