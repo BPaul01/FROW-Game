@@ -1,0 +1,408 @@
+body {
+    background-color: #95C186;
+}
+
+.header {
+    background-color: rgb(233, 227, 227);
+    opacity: 80%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-title {
+    text-align: left;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+
+    text-align: center;
+    align-self: center;
+    justify-content: space-evenly;
+}
+
+.simple-button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    border: none;
+    background: none;
+
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.simple-button:hover {
+    background-color: #95C186;
+}
+
+.buttons .profile {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.buttons .start-game{
+    background-color: #85c149;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+
+    border: solid green;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.start-game:hover {
+    background-color: #c2fcaf;
+    color: green;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.main-section {
+    background-color: #BCA265;
+
+    justify-content: center;
+}
+
+.user{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-start;
+}
+
+.avatar-picture{
+    align-self: flex-start;
+    
+    border: solid;
+}
+
+.username{
+    align-self: center;
+
+    font-family: 'Brush Script MT', cursive;
+    font-weight: bold;
+}
+
+.scores{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.score-title{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+.bold-line{
+    background-color: black;
+    border: solid black;
+}
+
+.record{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+}
+
+.line{
+    background-color: black;
+    border: solid black;
+}
+
+.sign-out{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+
+    background-color: rgb(254, 98, 98);
+
+    border: solid red;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.sign-out:hover {
+    background-color: rgb(255, 181, 181);
+    color: rgb(228, 56, 56);
+}
+
+/* Text Title colors */
+.red-text {
+    color: #B6472C;
+}
+
+.green-text {
+    color: #64AC1D;
+}
+
+.orange-text {
+    color: #DD7429;
+}
+
+.yellow-text {
+    color: #CFD724;
+}
+
+@media screen and (max-width: 767px) {
+    /* Phone */
+
+    .header {
+        width: 100%;
+        height: max-content;
+
+        padding-bottom: 1vh;
+        border-radius: 3vw;
+    }
+
+    .game-title {
+        font-size: 14vw;
+
+        padding-left: 5vw;
+        padding-top: 2vw;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .simple-button{
+        font-size: 4vw;
+
+        border-radius: 2.5vw;
+        padding: 2vw;
+        margin: 2vw;
+    }
+
+    .buttons .start-game{
+        font-size: 5vw;
+
+        border-radius: 2.5vw;
+        padding: 2vw;
+        margin: 2vw;
+    }
+
+    .main-section{
+        width: 80%;
+        padding: 5vw;
+
+        border-radius: 3vw;
+        margin-top: 7vh;
+    }
+
+    .user{
+        gap: 4vw;
+    }
+
+    .avatar-picture{
+        width: 30%;
+        height: auto;
+    }
+
+    .username{
+        font-size: 7vw;
+    }
+
+    .score-title{
+        font-size: 5.5vw;
+    }
+
+    .bold-line{
+        height: 0.5vh;
+    }
+
+    .line{
+        height: 0.1vw;
+    }
+
+    .record{
+        font-size: 4vw;
+    }
+    
+    .sign-out{
+        font-size: 3vw;
+
+        padding: 2vw;
+        margin-top: 10vh;
+        border-radius: 2.5vw;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Tablet */
+
+    .header {
+        width: 100%;
+        height: 30vh;
+
+        border-radius: 3vw;
+    }
+
+    .game-title {
+        font-size: 13vw;
+
+        padding-left: 5vw;
+        padding-top: 2vw;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .simple-button{
+        font-size: 4vw;
+
+        border-radius: 2.5vw;
+        padding: 2vw;
+        margin: 2vw;
+    }
+
+    .buttons .start-game{
+        font-size: 6vw;
+
+        border-radius: 2.5vw;
+        padding: 2vw;
+        margin: 2vw;
+    }
+
+    .main-section{
+        width: 80%;
+        padding: 5vw;
+
+        border-radius: 3vw;
+        margin-top: 7vh;
+    }
+
+    .user{
+        gap: 4vw;
+    }
+
+    .avatar-picture{
+        width: 30%;
+        height: auto;
+    }
+
+    .username{
+        font-size: 7vw;
+    }
+
+    .score-title{
+        font-size: 5.5vw;
+    }
+
+    .bold-line{
+        height: 0.8vh;
+    }
+
+    .record{
+        font-size: 4vw;
+    }
+    
+    .sign-out{
+        font-size: 3vw;
+
+        padding: 2vw;
+        margin-top: 8vh;
+        border-radius: 2.5vw;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    /* Desktop */
+
+    .header {
+        width: 100%;
+        height: 10vw;
+
+        border-radius: 1.5vw;
+    }
+
+    .game-title {
+        font-size: 6vw;
+        padding-left: 1vw;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+    }
+
+    .buttons {
+        font-size: 2.5vw;
+        width: 50vw;
+    }
+
+    .simple-button{
+        font-size: 2vw;
+        border-radius: 2.5vw;
+    }
+
+    .buttons .start-game{
+        font-size: 2vw;
+        padding: 1vw;
+        padding-inline: 1.5vw;
+        border-radius: 2.5vw;
+    }
+
+    .main-section{
+        width: 80%;
+        padding: 5vw;
+
+        border-radius: 2vw;
+        margin-top: 2vh;
+    }
+
+    .user{
+        gap: 4vw;
+    }
+
+    .avatar-picture{
+        width: 20%;
+        height: auto;
+    }
+
+    .username{
+        font-size: 5vw;
+    }
+
+    .score-title{
+        font-size: 3vw;
+    }
+
+    .bold-line{
+        height: 0.8vh;
+    }
+
+    .record{
+        font-size: 3vw;
+    }
+    
+    .sign-out{
+        font-size: 2vw;
+
+        padding: 1vw;
+        padding-inline: 1.5vw;
+
+        margin-top: 10vh;
+        border-radius: 2.5vw;
+    }
+}
