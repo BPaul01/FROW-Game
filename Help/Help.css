@@ -96,9 +96,7 @@ h3 {
     color: #571504;
 }
 
-.text-container p,
-li,
-span {
+div.text-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'Gill Sans', sans-serif;
 }
 

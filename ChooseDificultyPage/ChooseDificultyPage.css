@@ -1,0 +1,183 @@
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header {
+    text-align: center;
+    color: aliceblue;
+    font-family: 'Brush Script MT', cursive;
+    text-shadow: 0.15em 0.15em 0.1em #316b47;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 1s;
+    text-align: center;
+    cursor: pointer;
+}
+
+main button {
+    background-color: #b2d33b;
+    border-radius: 15px;
+    color: #23411b;
+    font-family: 'Brush Script MT', cursive;
+    text-shadow: 2px 2px #000000;
+    font-weight: bold;
+    box-shadow: 0 5px #173020;
+}
+
+main button:hover {
+    background-color: #316b47;
+    color: aliceblue;
+}
+
+main button:active {
+    background-color: #316b47;
+    box-shadow: 0 7px #173020;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+footer div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer button {
+    border-radius: 30px;
+    font-family: 'Brush Script MT', cursive;
+    font-weight: bold;
+}
+
+footer .buttonInapoi {
+    background-color: #884331;
+    color: rgb(235, 212, 203);
+}
+
+footer .buttonInapoi:hover {
+    background-color: #df9100;
+    color: #572a1f;
+}
+
+footer .buttonStart {
+    background-color: #79C01E;
+    color: #173020;
+}
+
+footer .buttonStart:hover {
+    background-color: #3c6802;
+    color: rgb(235, 212, 203);
+}
+
+
+/*Desktop*/
+
+@media screen and (min-width: 1024px) {
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("background.jpeg");
+    }
+    header {
+        font-size: 1.8vw;
+        text-shadow: 2px 2px #316b47;
+    }
+    main {
+        height: 26vw;
+    }
+    main button {
+        width: 25vw;
+        height: 5vw;
+        font-size: 2vw;
+    }
+    footer {
+        /*margin-bottom: 2vw;*/
+        margin-top: 12vh;
+    }
+    footer button {
+        width: 18vw;
+        height: 4vw;
+        margin-left: 4vw;
+        margin-right: 4vw;
+        font-size: 1.5vw;
+    }
+}
+
+
+/*IPad*/
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("background.jpeg");
+    }
+    header {
+        font-size: 4vw;
+        text-shadow: 2px 2px #316b47;
+    }
+    main {
+        height: 50vw;
+    }
+    main button {
+        width: 48vw;
+        height: 10vw;
+        font-size: 3vw;
+    }
+    footer {
+        /*margin-bottom: 5vw;*/
+        margin-top: 12vh;
+    }
+    footer button {
+        width: 30vw;
+        height: 8vw;
+        margin-left: 3vw;
+        margin-right: 3vw;
+        font-size: 2.5vw;
+    }
+}
+
+
+/*Phone*/
+
+@media screen and (max-width: 767px) {
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("background-phone.jpeg");
+    }
+    header {
+        font-size: 5vw;
+        text-shadow: 2px 2px #316b47;
+    }
+    main {
+        height: 70vw;
+    }
+    main button {
+        width: 70vw;
+        height: 15vw;
+        font-size: 5vw;
+    }
+    footer {
+        /*margin-bottom: 12vw;*/
+        margin-top: 10vh;
+    }
+    footer button {
+        width: 50vw;
+        height: 12vw;
+        margin-left: 4vw;
+        margin-right: 4vw;
+        font-size: 4.5vw;
+    }
+}
