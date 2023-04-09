@@ -91,7 +91,7 @@ footer .buttonStart:hover {
 
 @media screen and (min-width: 1024px) {
     body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("background.jpeg");
+        background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url("background.jpeg");
     }
     header {
         font-size: 1.8vw;
@@ -123,7 +123,7 @@ footer .buttonStart:hover {
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("background.jpeg");
+        background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url("background.jpeg");
     }
     header {
         font-size: 4vw;
@@ -155,7 +155,7 @@ footer .buttonStart:hover {
 
 @media screen and (max-width: 767px) {
     body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("background-phone.jpeg");
+        background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url("background-phone.jpeg");
     }
     header {
         font-size: 5vw;
