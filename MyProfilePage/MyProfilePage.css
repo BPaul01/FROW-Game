@@ -7,13 +7,12 @@ body {
     opacity: 80%;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-
-    border-radius: 1.5vw;
 }
 
-.titleGame {
+.game-title {
     text-align: left;
     font-weight: bold;
 }
@@ -25,8 +24,6 @@ body {
     text-align: center;
     align-self: center;
     justify-content: space-evenly;
-
-    width: 50vw;
 }
 
 .simple-button{
@@ -34,10 +31,6 @@ body {
 
     border: none;
     background: none;
-
-    font-size: 2vw;
-
-    border-radius: 2.5vw;
 
     transition-duration: 1s;
     cursor: pointer;
@@ -53,17 +46,10 @@ body {
 }
 
 .buttons .start-game{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
     background-color: #85c149;
 
-    font-size: 2vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bolder;
-
-    padding: 1vw;
-    padding-inline: 1.5vw;
-
-    border-radius: 2.5vw;
 
     border: solid green;
     transition-duration: 1s;
@@ -86,12 +72,6 @@ main{
     background-color: #BCA265;
 
     justify-content: center;
-
-    width: 80%;
-    padding: 5vw;
-
-    border-radius: 2vw;
-    margin-top: 2vh;
 }
 
 .user{
@@ -99,15 +79,11 @@ main{
     flex-direction: row;
 
     justify-content: flex-start;
-    gap: 4vw;
 }
 
 .avatar-picture{
     align-self: flex-start;
     
-    width: 20%;
-    height: auto;
-
     border: solid;
 }
 
@@ -115,7 +91,6 @@ main{
     align-self: center;
 
     font-family: 'Brush Script MT', cursive;
-    font-size: 5vw;
     font-weight: bold;
 }
 
@@ -128,14 +103,12 @@ main{
 
 .score-title{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 3vw;
     font-weight: bolder;
 }
 
 .bold-line{
     background-color: black;
     border: solid black;
-    height: 0.8vh;
 }
 
 .record{
@@ -143,8 +116,6 @@ main{
     flex-direction: row;
 
     justify-content: space-around;
-
-    font-size: 3vw;
 }
 
 .line{
@@ -154,17 +125,9 @@ main{
 
 .sign-out{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-    background-color: rgb(254, 98, 98);
-
-    font-size: 2vw;
     font-weight: bolder;
 
-    padding: 1vw;
-    padding-inline: 1.5vw;
-
-    margin-top: 10vh;
-    border-radius: 2.5vw;
+    background-color: rgb(254, 98, 98);
 
     border: solid red;
     transition-duration: 1s;
@@ -193,14 +156,188 @@ main{
     color: #CFD724;
 }
 
+@media screen and (max-width: 767px) {
+    /* Phone */
+
+    .header {
+        width: 100%;
+        height: max-content;
+
+        padding-bottom: 1vh;
+        border-radius: 3vw;
+    }
+
+    .game-title {
+        font-size: 14vw;
+
+        padding-left: 5vw;
+        padding-top: 2vw;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .simple-button{
+        font-size: 4vw;
+
+        border-radius: 2.5vw;
+        padding: 2vw;
+        margin: 2vw;
+    }
+
+    .buttons .start-game{
+        font-size: 5vw;
+
+        border-radius: 2.5vw;
+        padding: 2vw;
+        margin: 2vw;
+    }
+
+    .main-section{
+        width: 80%;
+        padding: 5vw;
+
+        border-radius: 3vw;
+        margin-top: 7vh;
+    }
+
+    .user{
+        gap: 4vw;
+    }
+
+    .avatar-picture{
+        width: 30%;
+        height: auto;
+    }
+
+    .username{
+        font-size: 7vw;
+    }
+
+    .score-title{
+        font-size: 5.5vw;
+    }
+
+    .bold-line{
+        height: 0.5vh;
+    }
+
+    .line{
+        height: 0.1vw;
+    }
+
+    .record{
+        font-size: 4vw;
+    }
+    
+    .sign-out{
+        font-size: 3vw;
+
+        padding: 2vw;
+        margin-top: 10vh;
+        border-radius: 2.5vw;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Tablet */
+
+    .header {
+        width: 100%;
+        height: 30vh;
+
+        border-radius: 3vw;
+    }
+
+    .game-title {
+        font-size: 13vw;
+
+        padding-left: 5vw;
+        padding-top: 2vw;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .simple-button{
+        font-size: 4vw;
+
+        border-radius: 2.5vw;
+        padding: 2vw;
+        margin: 2vw;
+    }
+
+    .buttons .start-game{
+        font-size: 6vw;
+
+        border-radius: 2.5vw;
+        padding: 2vw;
+        margin: 2vw;
+    }
+
+    .main-section{
+        width: 80%;
+        padding: 5vw;
+
+        border-radius: 3vw;
+        margin-top: 7vh;
+    }
+
+    .user{
+        gap: 4vw;
+    }
+
+    .avatar-picture{
+        width: 30%;
+        height: auto;
+    }
+
+    .username{
+        font-size: 7vw;
+    }
+
+    .score-title{
+        font-size: 5.5vw;
+    }
+
+    .bold-line{
+        height: 0.8vh;
+    }
+
+    .record{
+        font-size: 4vw;
+    }
+    
+    .sign-out{
+        font-size: 3vw;
+
+        padding: 2vw;
+        margin-top: 8vh;
+        border-radius: 2.5vw;
+    }
+}
+
 @media screen and (min-width: 1024px) {
-    /*DESKTOP*/
+    /* Desktop */
+
     .header {
         width: 100%;
         height: 10vw;
+
+        border-radius: 1.5vw;
     }
 
-    .titleGame {
+    .game-title {
         font-size: 6vw;
         padding-left: 1vw;
     }
@@ -211,93 +348,61 @@ main{
 
     .buttons {
         font-size: 2.5vw;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    /*IPad*/
-    .header {
-        width: 100%;
-        height: 30vw;
-    }
-    .titleGame {
-        font-size: 13vw;
-        padding-left: 5vw;
-        padding-top: 2vw;
-    }
-    body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
-    }
-    .ButtonsHeader {
-        /*justify-self: center;*/
-        font-size: 5vw;
-    }
-    div.ButtonsHeader a.button {
-        padding: 2vw 2vw;
-        margin: 2vw 2vw;
-    }
-    main {
-        left: 10vw;
-        right: 10vw;
-    }
-    div.button-container img {
-        width: 15vw;
-        height: auto;
-    }
-    .login-container {
-        width: 60vw;
-        height: 40vw;
-        margin: 18vw;
-        margin-top: 20vw;
-    }
-    .button-container {
         width: 50vw;
-        height: 13vw;
-        margin: 3vw;
-        font-size: 5vw;
     }
-}
 
-@media screen and (max-width: 767px) {
-    /*Phone*/
-    .header {
-        width: 100%;
-        height: 45vw;
-        justify-content: center;
+    .simple-button{
+        font-size: 2vw;
+        border-radius: 2.5vw;
     }
-    .titleGame {
-        font-size: 14vw;
-        text-align: center;
-        padding-top: 5vw;
+
+    .buttons .start-game{
+        font-size: 2vw;
+        padding: 1vw;
+        padding-inline: 1.5vw;
+        border-radius: 2.5vw;
     }
-    body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+
+    .main-section{
+        width: 80%;
+        padding: 5vw;
+
+        border-radius: 2vw;
+        margin-top: 2vh;
     }
-    .ButtonsHeader {
-        font-size: 6vw;
+
+    .user{
+        gap: 4vw;
     }
-    div.ButtonsHeader a.button {
-        padding: 2vw 2vw;
-        margin: 2vw 2vw;
-    }
-    main {
-        left: 5vw;
-        right: 5vw;
-    }
-    div.button-container img {
-        width: 15vw;
+
+    .avatar-picture{
+        width: 20%;
         height: auto;
     }
-    .login-container {
-        width: 75vw;
-        height: 50vw;
-        margin: 2vw;
-        margin-top: 35vw;
+
+    .username{
+        font-size: 5vw;
     }
-    .button-container {
-        width: 70vw;
-        height: 13vw;
-        margin: 3vw;
-        font-size: 6vw;
+
+    .score-title{
+        font-size: 3vw;
+    }
+
+    .bold-line{
+        height: 0.8vh;
+    }
+
+    .record{
+        font-size: 3vw;
+    }
+    
+    .sign-out{
+        font-size: 2vw;
+
+        padding: 1vw;
+        padding-inline: 1.5vw;
+
+        margin-top: 10vh;
+        border-radius: 2.5vw;
     }
 }
