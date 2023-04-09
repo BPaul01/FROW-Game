@@ -1,0 +1,303 @@
+body {
+    background-color: #95C186;
+}
+
+.header {
+    background-color: rgb(233, 227, 227);
+    opacity: 80%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 1.5vw;
+}
+
+.titleGame {
+    text-align: left;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+
+    text-align: center;
+    align-self: center;
+    justify-content: space-evenly;
+
+    width: 50vw;
+}
+
+.simple-button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    border: none;
+    background: none;
+
+    font-size: 2vw;
+
+    border-radius: 2.5vw;
+
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.simple-button:hover {
+    background-color: #95C186;
+}
+
+.buttons .profile {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.buttons .start-game{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    background-color: #85c149;
+
+    font-size: 2vw;
+    font-weight: bolder;
+
+    padding: 1vw;
+    padding-inline: 1.5vw;
+
+    border-radius: 2.5vw;
+
+    border: solid green;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.start-game:hover {
+    background-color: #c2fcaf;
+    color: green;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.main-section {
+    background-color: #BCA265;
+
+    justify-content: center;
+
+    width: 80%;
+    padding: 5vw;
+
+    border-radius: 2vw;
+    margin-top: 2vh;
+}
+
+.user{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-start;
+    gap: 4vw;
+}
+
+.avatar-picture{
+    align-self: flex-start;
+    
+    width: 20%;
+    height: auto;
+
+    border: solid;
+}
+
+.username{
+    align-self: center;
+
+    font-family: 'Brush Script MT', cursive;
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.scores{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.score-title{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3vw;
+    font-weight: bolder;
+}
+
+.bold-line{
+    background-color: black;
+    border: solid black;
+    height: 0.8vh;
+}
+
+.record{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+
+    font-size: 3vw;
+}
+
+.line{
+    background-color: black;
+    border: solid black;
+}
+
+.sign-out{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    background-color: rgb(254, 98, 98);
+
+    font-size: 2vw;
+    font-weight: bolder;
+
+    padding: 1vw;
+    padding-inline: 1.5vw;
+
+    margin-top: 10vh;
+    border-radius: 2.5vw;
+
+    border: solid red;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.sign-out:hover {
+    background-color: rgb(255, 181, 181);
+    color: rgb(228, 56, 56);
+}
+
+/* Text Title colors */
+.red-text {
+    color: #B6472C;
+}
+
+.green-text {
+    color: #64AC1D;
+}
+
+.orange-text {
+    color: #DD7429;
+}
+
+.yellow-text {
+    color: #CFD724;
+}
+
+@media screen and (min-width: 1024px) {
+    /*DESKTOP*/
+    .header {
+        width: 100%;
+        height: 10vw;
+    }
+
+    .titleGame {
+        font-size: 6vw;
+        padding-left: 1vw;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618.jpeg");
+    }
+
+    .buttons {
+        font-size: 2.5vw;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /*IPad*/
+    .header {
+        width: 100%;
+        height: 30vw;
+    }
+    .titleGame {
+        font-size: 13vw;
+        padding-left: 5vw;
+        padding-top: 2vw;
+    }
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+    }
+    .ButtonsHeader {
+        /*justify-self: center;*/
+        font-size: 5vw;
+    }
+    div.ButtonsHeader a.button {
+        padding: 2vw 2vw;
+        margin: 2vw 2vw;
+    }
+    main {
+        left: 10vw;
+        right: 10vw;
+    }
+    div.button-container img {
+        width: 15vw;
+        height: auto;
+    }
+    .login-container {
+        width: 60vw;
+        height: 40vw;
+        margin: 18vw;
+        margin-top: 20vw;
+    }
+    .button-container {
+        width: 50vw;
+        height: 13vw;
+        margin: 3vw;
+        font-size: 5vw;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /*Phone*/
+    .header {
+        width: 100%;
+        height: 45vw;
+        justify-content: center;
+    }
+    .titleGame {
+        font-size: 14vw;
+        text-align: center;
+        padding-top: 5vw;
+    }
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("pexels-photo-6608618 - Copy.jpeg");
+    }
+    .ButtonsHeader {
+        font-size: 6vw;
+    }
+    div.ButtonsHeader a.button {
+        padding: 2vw 2vw;
+        margin: 2vw 2vw;
+    }
+    main {
+        left: 5vw;
+        right: 5vw;
+    }
+    div.button-container img {
+        width: 15vw;
+        height: auto;
+    }
+    .login-container {
+        width: 75vw;
+        height: 50vw;
+        margin: 2vw;
+        margin-top: 35vw;
+    }
+    .button-container {
+        width: 70vw;
+        height: 13vw;
+        margin: 3vw;
+        font-size: 6vw;
+    }
+}
