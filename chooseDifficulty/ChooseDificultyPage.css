@@ -26,7 +26,7 @@ button {
     cursor: pointer;
 }
 
-main button {
+.difficulty-button {
     background-color: #b2d33b;
     border-radius: 15px;
     color: #23411b;
@@ -36,12 +36,13 @@ main button {
     box-shadow: 0 5px #173020;
 }
 
-main button:hover {
+.difficulty-button:hover,
+.difficulty-button.selected {
     background-color: #316b47;
     color: aliceblue;
 }
 
-main button:active {
+.difficulty-button:active {
     background-color: #316b47;
     box-shadow: 0 7px #173020;
 }
@@ -100,7 +101,7 @@ footer .buttonStart:hover {
     main {
         height: 26vw;
     }
-    main button {
+    .difficulty-button {
         width: 25vw;
         height: 5vw;
         font-size: 2vw;
@@ -132,7 +133,7 @@ footer .buttonStart:hover {
     main {
         height: 50vw;
     }
-    main button {
+    .difficulty-button {
         width: 48vw;
         height: 10vw;
         font-size: 3vw;
@@ -164,7 +165,7 @@ footer .buttonStart:hover {
     main {
         height: 70vw;
     }
-    main button {
+    .difficulty-button {
         width: 70vw;
         height: 15vw;
         font-size: 5vw;

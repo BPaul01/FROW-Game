@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="ChooseDificultyPage.css" />
+    <title>ChooseDificultyPage</title>
+</head>
+
+<body>
+<header class="header">
+    <h1>Alege nivelul de dificultate</h1>
+</header>
+
+<main>
+    <button
+            class="difficulty-button"
+            data-difficulty="easy"
+            onclick="selectDifficulty('easy')"
+    >
+        USOR
+    </button>
+
+    <button
+            class="difficulty-button"
+            data-difficulty="medium"
+            onclick="selectDifficulty('medium')"
+    >
+        MEDIU
+    </button>
+
+    <button
+            class="difficulty-button"
+            data-difficulty="hard"
+            onclick="selectDifficulty('hard')"
+    >
+        GREU
+    </button>
+</main>
+<footer>
+    <div>
+        <button class="buttonInapoi" onclick="history.back()">Înapoi</button>
+
+        <button
+                class="buttonStart"
+                onclick="startGameBasedOnSelectedDifficulty()"
+        >
+            START
+        </button>
+    </div>
+</footer>
+
+<script>
+    //variabila unde pastram dificultatea
+    var selectedDifficulty;
+
+    window.onload = function () {
+        selectDifficulty("easy");
+    };
+
+    function selectDifficulty(difficulty) {
+        selectedDifficulty = difficulty;
+
+        //deselectare a butoanelor selectate
+        let selectedButtons =
+            document.getElementsByClassName("difficulty-button");
+        for (let b = 0; b < selectedButtons.length; b++) {
+            selectedButtons[b].classList.remove("selected");
+        }
+
+        //selectam butonul corespunzator
+        let selectedButton =
+            document.getElementsByClassName("difficulty-button");
+        for (let b = 0; b < selectedButton.length; b++) {
+            if (selectedButton[b].getAttribute("data-difficulty") == difficulty) {
+                selectedButton[b].classList.add("selected");
+            }
+        }
+    }
+
+    function startGameBasedOnSelectedDifficulty() {
+        location.assign(
+            "/gamePage/index.html?difficulty=" + selectedDifficulty
+        );
+    }
+</script>
+</body>
+</html>
