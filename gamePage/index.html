@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="GamePageEasy.css" />
+    <title>GamePageEasy</title>
+</head>
+
+<body>
+<header class="header">
+    <div class="titleGame">
+        <span class="red-text">F</span>
+        <span class="green-text">R</span>
+        <span class="orange-text">O</span>
+        <span class="yellow-text">W</span>
+        <sub class="orange-text">game</sub>
+    </div>
+
+    <button class="button buttonHeader">Ieşi din joc</button>
+</header>
+
+<main>
+    <div class="main1">
+        <div class="containerRectangle">
+            <p class="intrebare">Întrebarea:</p>
+            <p class="numar" id="numar"></p>
+        </div>
+
+        <div class="containterImage">
+            <h2>Alege răspunsul corect</h2>
+            <img
+                    src="/assets/images/loader.gif"
+                    id="question_image"
+                    alt="fruct/leguma"
+            />
+        </div>
+
+        <div class="containerRectangle">
+            <p class="dificultate">Dificultate:</p>
+            <p class="nivel" id="difficulty"></p>
+        </div>
+    </div>
+
+    <div class="main2">
+        <input type="hidden" id="questId" value="0">
+        <button class="button buttonRaspuns" id="button1"></button>
+        <button class="button buttonRaspuns" id="button2"></button>
+        <button class="button buttonRaspuns" id="button3"></button>
+    </div>
+</main>
+</body>
+
+<script>
+
+    function fetchQuestion()
+    {
+        fetch("/questions?difficulty=easy", {
+            method: "GET",
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById("questId").value = data.id;
+
+                document.getElementById("button1").innerHTML = data.answers[0];
+                document.getElementById("button2").innerHTML = data.answers[1];
+                document.getElementById("button3").innerHTML = data.answers[2];
+                document.getElementById(
+                    "question_image"
+                ).src = `/assets/images/questions/${data.id}/${data.photo}`;
+            });
+    }
+
+    function updateIndex()
+    {
+        let questionIndex = localStorage.getItem('questionIndex');
+        questionIndex = parseInt(questionIndex) + 1;
+        localStorage.setItem('questionIndex', questionIndex);
+
+        document.getElementById("numar").innerHTML = localStorage.getItem('questionIndex');
+    }
+
+    window.onload = function () {
+        fetchQuestion();
+        updateIndex();
+    };
+</script>
+</html>

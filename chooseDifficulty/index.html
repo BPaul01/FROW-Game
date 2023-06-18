@@ -80,6 +80,8 @@
     }
 
     function startGameBasedOnSelectedDifficulty() {
+        localStorage.setItem('questionIndex', 0);
+
         location.assign(
             "/gamePage/index.html?difficulty=" + selectedDifficulty
         );
