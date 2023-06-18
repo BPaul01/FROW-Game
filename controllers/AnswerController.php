@@ -59,4 +59,21 @@ class AnswerController
 
     }
 
+    public function getQuestionAnswers($question_id){
+        $statement = $this->conn->prepare("SELECT * FROM answers a  WHERE a.question_id = ?");
+        $statement->bind_param("i",$question_id);
+        $statement->execute();
+
+        $answers = [];
+
+        $result = $statement->get_result();
+        if($result->num_rows === 0) exit('No rows');
+
+        while($row = $result->fetch_assoc()) {
+            $answers = array_merge($answers, [$row['answer']]);
+        }
+
+        return $answers;
+    }
+
 }
