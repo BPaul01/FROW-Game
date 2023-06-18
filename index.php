@@ -18,7 +18,11 @@ $authController = new AuthController($requestMethod);
 
 switch ($uri[1]) {
     case 'login':
-        $authController->processRequest();
+        echo $authController->processLoginRequest();
+        break;
+
+    case 'signup':
+        echo $authController->signUpRequest();
         break;
 
     case 'questions':
