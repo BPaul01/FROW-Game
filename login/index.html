@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="LoginPage.css" />
+</head>
+<body>
+<header>
+    <h1 class="game-title">
+        <span class="red-text shadow">F</span>
+        <span class="green-text shadow">R</span>
+        <span class="orange-text shadow">O</span>
+        <span class="yellow-text shadow">W</span>
+        <sub class="orange-text shadow">game</sub>
+    </h1>
+</header>
+
+<main>
+    <div class="main-padding">
+        <div class="content">
+            <p class="login-title">Conectare</p>
+
+            <form method="post" id="loginForm" onsubmit="fetchLogin(event)">
+                <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Nume de utilizator"
+                        required
+                />
+                <br />
+                <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Parolă"
+                        required
+                />
+                <br />
+                <button type="submit" class="submit button">CONTINUĂ</button>
+            </form>
+        </div>
+
+        <div class="fruits">
+            <span class="fruit avocado">🥑</span> <br />
+            <span class="fruit orange">🍊</span> <br />
+            <span class="fruit lemon">🍋</span>
+        </div>
+    </div>
+</main>
+</body>
+<script>
+    function fetchLogin(event) {
+        event.preventDefault();
+        fetch("/login/", {
+            method: "POST",
+            body: new FormData(document.getElementById("loginForm")),
+        })
+            .then((response) => response.text())
+            .then((token) => {
+                localStorage.setItem("token", token);
+                location.assign("/myProfile/index.html");
+            });
+    }
+</script>
+</html>

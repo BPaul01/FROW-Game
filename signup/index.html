@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="SignUpPage.css" />
+</head>
+<body>
+<header>
+    <h1 class="game-title">
+        <span class="red-text shadow">F</span>
+        <span class="green-text shadow">R</span>
+        <span class="orange-text shadow">O</span>
+        <span class="yellow-text shadow">W</span>
+        <sub class="orange-text shadow">game</sub>
+    </h1>
+</header>
+
+<main>
+    <div class="main-padding">
+        <div class="content">
+            <p class="login-title">Conectare</p>
+
+            <form method="post" id="signupForm" onsubmit="fetchSignup(event)">
+                <input
+                        type="text"
+                        name="username"
+                        placeholder="Nume de utilizator"
+                />
+                <br />
+                <input type="password" name="password" placeholder="Parolă" />
+                <br />
+                <input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirmă Parola"
+                />
+                <br />
+                <button type="submit" class="submit button">CONTINUĂ</button>
+            </form>
+        </div>
+
+        <div class="fruits">
+            <span class="fruit avocado">🥑</span> <br />
+            <span class="fruit avocado">🍊</span> <br />
+            <span class="fruit avocado">🍋</span>
+        </div>
+    </div>
+</main>
+</body>
+<script>
+    function fetchSignup(event) {
+        event.preventDefault();
+        fetch("/signup/", {
+            method: "POST",
+            body: new FormData(document.getElementById("signupForm")),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (!data.success) {
+                    window.alert(data.message);
+                } else {
+                    localStorage.setItem("token", data.token);
+                    location.assign("/myProfile/index.html");
+                }
+            });
+    }
+</script>
+</html>
