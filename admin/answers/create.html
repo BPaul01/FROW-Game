@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Answer</title>
+  <style>
+    .wrapper {
+      width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <div>
+    <div>
+      <div>
+        <h2>Create Answer</h2>
+        <form id="answerForm" onsubmit="createAnswer(event)">
+          <div>
+            <label>Question</label>
+            <select id="question_id" name="question_id">
+            </select>
+          </div>
+
+          <div>
+            <label>Answer</label>
+            <input type="text" name="answer" />
+          </div>
+
+          <div>
+            <label>Response</label>
+            <select id="response" name="response">
+              <option value="true">true</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+
+          <input type="submit" class="btn btn-primary" value="Submit" />
+          <a href="/admin/answers/view.html">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script>
+  window.onload = () => fetchAllQuestionsIds();
+  function createAnswer(event) {
+    event.preventDefault();
+    fetch("/admin/answers/create.php", {
+      method: "POST",
+      body: new FormData(document.getElementById("answerForm")),
+    })
+            .then((response) => response.json())
+            .then((data) => {
+              if (!data.success) {
+                window.alert(data.message);
+              } else {
+                location.assign("/admin/answers/view.html");
+              }
+            });
+  }
+
+  function fetchAllQuestionsIds() {
+    fetch("/admin/answers/questionsIds.php", {
+      method: "GET",
+      //headers: new Headers({ Authentication: `Bearer ${token}` }),
+    })
+            .then((response) => response.json())
+            .then((data) => {
+              let options= "";
+              data.forEach((element) => {
+                options += `<option>${element.id}</option>`;
+              });
+
+              document.getElementById("question_id").innerHTML = options;
+            });
+  }
+</script>
+</html>

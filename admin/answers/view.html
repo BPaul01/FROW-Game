@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin</title>
+    <style>
+      .wrapper {
+        width: 600px;
+        margin: 0 auto;
+      }
+      table tr td:last-child {
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <div>
+          <div>
+            <div>
+              <h2 class="pull-left">Answers Details</h2>
+              <a href="/admin/answers/create.html">Add New Answers</a>
+            </div>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Question</th>
+                  <th>Answer</th>
+                  <th>Response</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="answersData"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    window.onload = () => fetchAllAnswers();
+
+    function fetchAllAnswers() {
+      fetch("/admin/answers/view.php", {
+        method: "GET",
+        headers: new Headers({ Authentication: `Bearer ${token}` }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          let table = "";
+          data.forEach((element) => {
+            table += `<tr>
+                     <td>${element.id}</td>
+                     <td>${element.question}</td>
+                     <td>${element.answer}</td>
+                     <td>${element.response}</td>
+                     <td><button onclick="editData(${element.id})">Edit</button></td>
+                     <td><button onclick="deleteData(${element.id})">Delete</button></td>
+                 </tr>`;
+          });
+
+          document.getElementById("answersData").innerHTML = table;
+        });
+    }
+
+    function deleteData(id) {
+      fetch("/admin/answers/delete.php?id=" + id, {
+        method: "DELETE",
+        headers: new Headers({ Authentication: `Bearer ${token}` }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.success) {
+            alert("Error when deleting Question");
+          } else {
+            fetchAllAnswers();
+          }
+        });
+    }
+
+    function editData(id) {
+      location.assign("/admin/answers/edit.html?id=" + id);
+    }
+  </script>
+</html>

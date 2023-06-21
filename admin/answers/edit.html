@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Answer</title>
+    <style>
+      .wrapper {
+        width: 600px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <div>
+          <div>
+            <h2>Edit Answer</h2>
+            <form id="answerForm" onsubmit="editAnswer(event)">
+              <div>
+                <label>Question</label>
+                <select id="question_id" name="question_id">
+                  <option value="1">1</option>
+                </select>
+              </div>
+
+              <div>
+                <label>Answer</label>
+                <input type="text" name="answer" />
+              </div>
+
+              <div>
+                <label>Response</label>
+                <select id="response" name="response">
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+                </select>
+              </div>
+
+              <input type="submit" class="btn btn-primary" value="Submit" />
+              <a href="/admin/answers/view.html">Cancel</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    window.onload = () => fetchAllQuestionsIds();
+    function editAnswer(event) {
+      event.preventDefault();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+
+      fetch("/admin/answers/edit.php?id=" + id, {
+        method: "POST",
+        body: new FormData(document.getElementById("answerForm")),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.success) {
+            window.alert(data.message);
+          } else {
+            location.assign("/admin/answers/view.html");
+          }
+        });
+    }
+
+    function fetchAllQuestionsIds() {
+      fetch("/admin/answers/questionsIds.php", {
+        method: "GET",
+        //headers: new Headers({ Authentication: `Bearer ${token}` }),
+      })
+              .then((response) => response.json())
+              .then((data) => {
+                let options= "";
+                data.forEach((element) => {
+                  options += `<option>${element.id}</option>`;
+                });
+
+                document.getElementById("question_id").innerHTML = options;
+              });
+    }
+  </script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Answer</title>
+  <style>
+    .wrapper {
+      width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <div>
+    <div>
+      <div>
+        <h2>Edit Fruit</h2>
+        <form id="fruitForm" onsubmit="editFruit(event)">
+
+          <div>
+            <label>New name</label>
+            <input type="text" name="new_name" />
+          </div>
+
+          <input type="submit" class="btn btn-primary" value="Submit" />
+          <a href="/admin/fruits/view.html">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script>
+  function editFruit(event) {
+    event.preventDefault();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    fetch("/admin/fruits/edit.php?id=" + id, {
+      method: "POST",
+      body: new FormData(document.getElementById("fruitForm")),
+    })
+            .then((response) => response.json())
+            .then((data) => {
+              if (!data.success) {
+                window.alert(data.message);
+              } else {
+                location.assign("/admin/fruits/view.html");
+              }
+            });
+  }
+</script>
+</html>

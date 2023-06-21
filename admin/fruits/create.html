@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Fruit</title>
+    <style>
+      .wrapper {
+        width: 600px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <div>
+          <div>
+            <h2>Add a new Fruit</h2>
+            <form id="fruitForm" onsubmit="createFruit(event)">
+              <div>
+                <label>Name</label>
+                <input type="text" name="fruit_name" />
+              </div>
+
+              <input type="submit" class="btn btn-primary" value="Submit" />
+              <a href="/admin/questions/view.html">Cancel</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function createFruit(event) {
+      event.preventDefault();
+      fetch("/admin/fruits/create.php", {
+        method: "POST",
+        body: new FormData(document.getElementById("fruitForm")),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.success) {
+            window.alert(data.message);
+          } else {
+            location.assign("/admin/fruits/view.html");
+          }
+        });
+    }
+
+  </script>
+</html>
