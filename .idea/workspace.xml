@@ -5,11 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2efc199-12cd-4db8-bcd0-ccaf673fcca0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/UserEntity.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageHard/GamePageHard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageHard/GamePageHard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageHard/dovlecel-parte.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageHard/dovlecel.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageHard/varza.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageMedium/GamePageMedium.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageMedium/GamePageMedium.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageMedium/ananas-parte.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GamePageMedium/ananas.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chooseDifficulty/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/chooseDifficulty/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamePage/GamePageEasy.css" beforeDir="false" afterPath="$PROJECT_DIR$/gamePage/GamePageEasy.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamePage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamePage/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,13 +27,6 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,7 +55,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/bodal/Documents/Facultate/Tehnologii Web/WT-Project",
+    "last_opened_file_path": "C:/Users/Delia/Desktop/facultate-AN2/SEMESTRUL2/TW/WT-Project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -62,6 +63,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Delia\Desktop\facultate-AN2\SEMESTRUL2\TW\WT-Project\admin" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -74,7 +80,8 @@
       <workItem from="1687013058695" duration="1188000" />
       <workItem from="1687346026275" duration="634000" />
       <workItem from="1687349671115" duration="195000" />
-      <workItem from="1687460761336" duration="1064000" />
+      <workItem from="1687370447703" duration="774000" />
+      <workItem from="1687460977839" duration="1697000" />
     </task>
     <servers />
   </component>

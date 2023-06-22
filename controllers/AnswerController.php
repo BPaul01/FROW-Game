@@ -11,25 +11,28 @@ class AnswerController
     }
 
     public function processRequest(){
-        switch ($this->requestMethod){
+        switch ($this->requestMethod) {
             case 'GET':
+                /*
                 $body = file_get_contents('php://input');
                 $data = json_decode($body, true);
 
                 if ($data && isset($data['question_id']) && isset($data['received_answer'])) {
                     $questionId = $data['question_id'];
                     $receivedAnswer = $data['received_answer'];
+                */
 
-                    if($this->validateAnswer($questionId,$receivedAnswer)){
-                        return "correct";
-                    }
-                    else {return "incorrect";}
+                //find the value of the params
+                $questionId = $_GET['questionId'];
+                $receivedAnswer = $_GET['receivedAnswer'];
+
+                if ($this->validateAnswer($questionId, $receivedAnswer)) {
+                    return json_encode(["correct" => 'true']);
                 }
-                else{
-                    echo("Incorrect parameters!");
+                else {
+                    return json_encode(["correct" => 'false']);
                 }
 
-                break;
             default:
                 echo("Unsupported request method!");
                 break;
@@ -42,7 +45,7 @@ class AnswerController
             $statement->bind_param("i",$question_id);
             $statement->execute();
             $result = $statement->get_result();
-            if($result->num_rows === 0) exit('No rows');
+            //if($result->num_rows === 0) exit('No rows');
 
             while($row = $result->fetch_assoc()) {
                 if($received_answer == $row['answer']) {
@@ -56,9 +59,13 @@ class AnswerController
         catch(PDOException $e){
             trigger_error("Error in " . __METHOD__ . ": " . $e->getMessage(), E_USER_ERROR);
         }
-
+        return false;
     }
 
+    /**
+     * @param $question_id
+     * @return array containing all the answers of the question
+     */
     public function getQuestionAnswers($question_id){
         $statement = $this->conn->prepare("SELECT * FROM answers a  WHERE a.question_id = ?");
         $statement->bind_param("i",$question_id);
@@ -67,7 +74,7 @@ class AnswerController
         $answers = [];
 
         $result = $statement->get_result();
-        if($result->num_rows === 0) exit('No rows');
+        //if($result->num_rows === 0) exit('No rows');
 
         while($row = $result->fetch_assoc()) {
             $answers = array_merge($answers, [$row['answer']]);
@@ -75,5 +82,4 @@ class AnswerController
 
         return $answers;
     }
-
 }

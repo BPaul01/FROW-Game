@@ -1,5 +1,5 @@
 <?php
-include('entities/QuestionEntity.php');
+include_once('entities/QuestionEntity.php');
 
 class QuestionController
 {
@@ -52,7 +52,7 @@ class QuestionController
         $statement->execute();
 
         $result = $statement->get_result();
-        if($result->num_rows === 0) exit('No rows');
+        //if($result->num_rows === 0) exit('No rows');
 
         if($row = $result->fetch_assoc()) {
             $id = $row['id'];

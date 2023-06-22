@@ -33,9 +33,7 @@ switch ($uri[1]) {
 
     case 'answers':
         $controller = new AnswerController($db->getDb(),$requestMethod);
-        $response = $controller->processRequest();
-
-        echo ($response);
+        echo $controller->processRequest();
         break;
 
     case 'feed':
