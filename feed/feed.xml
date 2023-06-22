@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Game High Scores</title>
+  <link>http://localhost/rank</link>
+  <description>Latest high scores for the game</description>
+  <item>
+    <title>Marul sanatos - 50</title>
+    <description>Marul sanatos achieved a score of 50</description>
+  </item>
+  <item>
+    <title>Banana fericita - 45</title>
+    <description>Banana fericita achieved a score of 45</description>
+  </item>
+  <item>
+    <title>Para furioasa - 20</title>
+    <description>Para furioasa achieved a score of 20</description>
+  </item>
+  <item>
+    <title>Capsunica - 17</title>
+    <description>Capsunica achieved a score of 17</description>
+  </item>
+</channel>
+</rss>

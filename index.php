@@ -38,6 +38,10 @@ switch ($uri[1]) {
         echo ($response);
         break;
 
+    case 'feed':
+        header('Location: /feed/rss.php');
+        break;
+
     case 'validate':
         echo requestIsValid();
         break;
