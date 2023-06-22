@@ -18,7 +18,14 @@
         <sub class="orange-text">game</sub>
     </div>
 
-    <button class="button buttonHeader">Ieşi din joc</button>
+    <div class="score">
+        <p>Scorul tau: </p>
+        <p id="currentScore" class=""></p>
+    </div>
+
+
+
+    <button class="button buttonHeader" onclick="goBackMyProfile(event)">Ieşi din joc</button>
 </header>
 
 <main>
@@ -43,47 +50,136 @@
         </div>
     </div>
 
-    <div class="main2">
-        <input type="hidden" id="questId" value="0">
-        <button class="button buttonRaspuns" id="button1"></button>
-        <button class="button buttonRaspuns" id="button2"></button>
-        <button class="button buttonRaspuns" id="button3"></button>
+    <input type="hidden" id="questId" value="0" />
+    <div class="main2" id="main2">
     </div>
 </main>
 </body>
 
 <script>
+    const token = localStorage.getItem("token");
 
-    function fetchQuestion()
-    {
-        fetch("/questions?difficulty=easy", {
+    function searchForTrue(text) {
+        const regex = /\btrue\b/gi;
+        const matches = text.match(regex);
+
+        if (matches && matches.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function validateAnswer(event,button) {
+        event.preventDefault();
+        //get the content of the button
+        if(document.getElementById(button).type == "text") {
+            answer = document.getElementById(button).value;
+        } else {
+            answer = document.getElementById(button).textContent;
+        }
+        //get the id of the question
+        questId = document.getElementById("questId").value;
+
+        fetch(`/answers?questionId=${questId}&receivedAnswer=${answer}`, {
             method: "GET",
+            headers: new Headers({ Authentication: `Bearer ${token}` }),
+        })
+            .then(response => response.text())
+            .then(data => {
+
+                //update score if answer is correct
+                if(searchForTrue(data)){
+
+                    let score = localStorage.getItem("score");
+                    score = parseInt(score) + 1;
+                    localStorage.setItem("score", score);
+                }
+                location.reload();
+            });
+
+    }
+
+    function fetchQuestion(difficulty) {
+        fetch("/questions?difficulty=" + difficulty, {
+            method: "GET",
+            headers: new Headers({ Authentication: `Bearer ${token}` }),
         })
             .then((response) => response.json())
             .then((data) => {
                 document.getElementById("questId").value = data.id;
 
-                document.getElementById("button1").innerHTML = data.answers[0];
-                document.getElementById("button2").innerHTML = data.answers[1];
-                document.getElementById("button3").innerHTML = data.answers[2];
+                if(difficulty == 'hard'){
+
+                    let inputResponse = "";
+
+                    inputResponse += `<form method = "post" class="form" onsubmit="validateAnswer(event,'buttonRaspuns')">
+                <input class="buttonRaspunsHard" id = "buttonRaspuns" type="text" placeholder="Scrie răspunsul">`;
+                    inputResponse +=`<button type="submit" class="button buttonSubmit">Trimite răspunsul</button>
+            </form>`;
+
+                    document.getElementById("main2").innerHTML = inputResponse;
+                }
+                else {
+
+                    let buttons = "";
+                    buttons += `<button
+                    class="button buttonRaspuns"
+                    id="button1"
+                    onClick="validateAnswer(event,'button1')"
+            >${data.answers[0]}</button>`;
+                    buttons += `<button
+                    class="button buttonRaspuns"
+                    id="button2"
+                    onClick="validateAnswer(event,'button2')"
+            >${data.answers[1]}</button>`;
+                    buttons += `<button
+                    class="button buttonRaspuns"
+                    id="button3"
+                    onClick="validateAnswer(event,'button3')"
+            >${data.answers[2]}</button>`;
+
+                    document.getElementById("main2").innerHTML = buttons;
+                }
+
                 document.getElementById(
                     "question_image"
                 ).src = `/assets/images/questions/${data.id}/${data.photo}`;
             });
+
     }
 
-    function updateIndex()
-    {
-        let questionIndex = localStorage.getItem('questionIndex');
+    function updateIndex() {
+        let questionIndex = localStorage.getItem("questionIndex");
         questionIndex = parseInt(questionIndex) + 1;
-        localStorage.setItem('questionIndex', questionIndex);
+        localStorage.setItem("questionIndex", questionIndex);
 
-        document.getElementById("numar").innerHTML = localStorage.getItem('questionIndex');
+        document.getElementById("numar").innerHTML =
+            localStorage.getItem("questionIndex");
+    }
+
+    function getDifficultyFromRequest() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get("difficulty");
+    }
+
+    function goBackMyProfile(event){
+        event.preventDefault();
+
+        location.assign("/myProfile/index.html")
     }
 
     window.onload = function () {
-        fetchQuestion();
+        let difficulty = getDifficultyFromRequest();
+
+        document.getElementById("difficulty").innerHTML = difficulty;
+        document.getElementById("currentScore").innerHTML = localStorage.getItem("score");
+
+        fetchQuestion(difficulty);
         updateIndex();
     };
+
+
+
 </script>
 </html>
