@@ -3,12 +3,13 @@
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
+include_once($_SERVER["DOCUMENT_ROOT"] . "/entities/UserEntity.php");
+
 class AuthController
 {
-
     private $conn;
-    private $secret_Key  = '%aaSWvtJ98os_b<IQ_c$j<_A%bo_[xgct+j$d6LJ}^<pYhf+53k^-R;Xs<l%5dF';
-    private $domainName = "https://127.0.0.1";
+    private static $secret_Key  = '%aaSWvtJ98os_b<IQ_c$j<_A%bo_[xgct+j$d6LJ}^<pYhf+53k^-R;Xs<l%5dF';
+    private static $domainName = "https://127.0.0.1";
 
     public function __construct($db)
     {
@@ -16,10 +17,23 @@ class AuthController
     }
 
     public function processLoginRequest() {
-        //TODO: check if the username and password are correct and if so
-        if(isset($_POST['username']) && isset($_POST['password'])) {
-            $jwt = $this->createJWT($_POST['username']);
+        if(isset($_POST['username']) && isset($_POST['password']))
+        {
+            $user = trim(htmlspecialchars($_POST['username']));
+            $password = trim(htmlspecialchars($_POST['password']));
+            $hashedPassword = crypt($password, '$5$rounds=5000$' . static::$secret_Key . '$');
+
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE `name` = ? AND `password` = ?");
+            $stmt->bind_param("ss", $user, $hashedPassword);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows == 1) {
+                $row = $result->fetch_assoc();
+                $jwt = $this->createJWT($row['name'], $row['id'], $row['is_admin']);
+            }
         }
+
         return $jwt['body'] ?? "";
     }
 
@@ -49,9 +63,9 @@ class AuthController
 
         if($success)
         {
-            $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $this->storeUserData($_POST['username'], $hashedPassword);
-            $jwt = $this->createJWT($_POST['username']);
+            $hashedPassword = crypt($_POST['password'], '$5$rounds=5000$' . static::$secret_Key . '$');
+            $user_id = $this->storeUserData($_POST['username'], $hashedPassword);
+            $jwt = $this->createJWT($_POST['username'], $user_id, 0);
         }
 
         return json_encode([
@@ -62,7 +76,7 @@ class AuthController
     }
 
     public function isUsernameTaken($username) {
-        $stmt = $this->conn->prepare("SELECT COUNT(*) as count FROM users WHERE username = ?");
+        $stmt = $this->conn->prepare("SELECT COUNT(*) as count FROM users WHERE `name` = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -76,26 +90,30 @@ class AuthController
 
     public function storeUserData($username, $password)
     {
-        $stmt = $this->conn->prepare('INSERT INTO users (`username`, `password`) VALUES (?, ?)');
+        $stmt = $this->conn->prepare('INSERT INTO users (`name`, `password`) VALUES (?, ?)');
         $stmt->bind_param('ss', $username, $password);
         $stmt->execute();
+
+        return $stmt->insert_id;
     }
 
-    private function createJWT($user) {
+    private function createJWT($userName, $userId, $isAdmin) {
         $date   = new DateTimeImmutable();
         $request_data = [
             'iat'  => $date->getTimestamp(),         // ! Issued at: time when the token was generated
-            'iss'  => $this->domainName,                   // ! Issuer
+            'iss'  => static::$domainName,                   // ! Issuer
             'nbf'  => $date->getTimestamp(),         // ! Not before
             'exp'  => time() + 3600 * 24,                    // ! Expire
-            'userName' => $user,                 // User name
+            'user_name' => $userName,               // User name
+            'user_id' => $userId,                   // User id
+            'isAdmin' => $isAdmin,                   // User is admin
         ];
 
         $response['status_code_header'] = 'HTTP/1.1 200 OK';
         $response['content_type_header'] = 'Content-Type: application/json';
         $response['body'] = JWT::encode(
             $request_data,
-            $this->secret_Key,
+            static::$secret_Key,
             'HS512'
         );
 
@@ -112,13 +130,14 @@ class AuthController
         return $matches[1];
     }
 
-    function getAuthorizationHeader(){
+    public static function getAuthorizationHeader()
+    {
         $headers = null;
         if (isset($_SERVER['Authorization'])) {
             $headers = trim($_SERVER["Authorization"]);
         }
-        else if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-            $headers = trim($_SERVER["HTTP_AUTHORIZATION"]);
+        else if (isset($_SERVER['HTTP_AUTHENTICATION'])) {
+            $headers = trim($_SERVER["HTTP_AUTHENTICATION"]);
         } elseif (function_exists('apache_request_headers')) {
             $requestHeaders = apache_request_headers();
             $requestHeaders = array_combine(array_map('ucwords', array_keys($requestHeaders)), array_values($requestHeaders));
@@ -129,25 +148,43 @@ class AuthController
         return $headers;
     }
 
-    public function validateJWT( $jwt ) {
-        $secret_Key = $this -> secret_Key;
+    public static function validateJWT($jwt) {
+        $secret_Key = static::$secret_Key;
 
         try {
-            $token = JWT::decode($jwt, new Key($secret_Key, 'HS512'));
+            $tokenData = JWT::decode($jwt, new Key($secret_Key, 'HS512'));
         } catch (Exception $e) {
             header('HTTP/1.1 401 Unauthorized');
             exit;
         }
         $now = new DateTimeImmutable();
-        $domainName = $this -> domainName;
+        $domainName = static::$domainName;
 
-        if ($token->iss !== $domainName ||
-            $token->nbf > $now->getTimestamp() ||
-            $token->exp < $now->getTimestamp())
+        if ($tokenData->iss !== $domainName ||
+            $tokenData->nbf > $now->getTimestamp() ||
+            $tokenData->exp < $now->getTimestamp())
         {
             header('HTTP/1.1 401 Unauthorized');
             exit;
         }
+
+        return $tokenData;
     }
+
+    public static function getUserFomToken($jwt)
+    {
+        $tokenData = static::validateJWT($jwt);
+        return new UserEntity($tokenData->user_id, $tokenData->user_name, $tokenData->isAdmin);
+    }
+
+    public static function parseBearerToken($authorizationHeader)
+    {
+        if (preg_match('/Bearer\s(\S+)/', $authorizationHeader, $matches))
+        {
+            return $matches[1];
+        }
+        return null;
+    }
+
 
 }

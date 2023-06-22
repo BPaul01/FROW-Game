@@ -1,9 +1,10 @@
 <?php
 
-include_once('AuthController.php');
-include_once('controllers/QuestionController.php');
-include_once('controllers/AnswerController.php');
-include_once('Database.php');
+require_once('controllers/QuestionController.php');
+require_once('controllers/AnswerController.php');
+require_once('controllers/AuthController.php');
+require_once('Database.php');
+require_once('helpers.php');
 
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 
@@ -35,6 +36,10 @@ switch ($uri[1]) {
         $response = $controller->processRequest();
 
         echo ($response);
+        break;
+
+    case 'validate':
+        echo requestIsValid();
         break;
 
     default:
