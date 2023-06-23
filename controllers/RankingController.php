@@ -28,10 +28,6 @@ class RankingController{
             $statement->execute();
             $result = $statement->get_result();
 
-            /*$games = $result->fetchALL();
-            $jsonGames = json_encode($games);
-            return $jsonGames;*/
-
             $usersScores = array();
             while ($row = $result->fetch_assoc()) {
                 $usersScores[] = $row;
@@ -45,6 +41,3 @@ class RankingController{
 
     }
 }
-
-
-
