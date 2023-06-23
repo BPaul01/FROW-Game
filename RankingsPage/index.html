@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="RankingsPage.css">
+    <title>Clasament</title>
+</head>
+<body>
+<header class="header">
+    <div class="game-title">
+        <span class="red-text">F</span>
+        <span class="green-text">R</span>
+        <span class="orange-text">O</span>
+        <span class="yellow-text">W</span>
+        <sub class="orange-text">game</sub>
+    </div>
+
+    <div class="buttons">
+        <button class="simple-button profile" onclick="goBackMyProfile(event)">Profilul meu</button>
+        <button class="simple-button ranking" onclick="goToClasament(event)">Clasament</button>
+        <button class="button start-game" onclick="goToChooseDif(event)">Începe joc</button>
+    </div>
+</header>
+
+<main>
+    <div class="main-section" id="rankings">
+        <div class="rankings">
+            <p class="ranking-title">Clasament</p>
+        </div>
+
+        <hr class="bold-line">
+
+    </div>
+</main>
+
+</body>
+<script>
+    function goToChooseDif(event){
+        event.preventDefault();
+        location.assign("/choosedifficulty/index.html");
+    }
+    function goBackMyProfile(event){
+        event.preventDefault();
+        location.assign("/myProfile/index.html")
+    }
+    function goToClasament(event){
+        event.preventDefault();
+        location.assign("/RankingsPage/index.html");
+    }
+    function clasament(){
+        const token = localStorage.getItem("token");
+        let records = [];
+
+        fetch("/clasament", {
+            method: "GET",
+            headers: new Headers({ Authentication: `Bearer ${token}` }),
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                data.forEach((value, index) => {
+
+                    records += `<div class="record">
+                    <span class="crt-nr">${index + 1}.</span>
+                    <span class="username">${value.username}</span>
+                    <span class="points">${value.mScore}</span>
+                    <span class="date">${value.data}</span>
+                    </div>
+
+                <hr class="line">`;
+                });
+
+                records += `<button class="button sign-out">Deloghează-te</button>`;
+                document.getElementById("rankings").innerHTML = records;
+            });
+    }
+    window.onload = function (){
+        clasament();
+    }
+</script>
+</html>

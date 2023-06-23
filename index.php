@@ -3,6 +3,9 @@
 require_once('controllers/QuestionController.php');
 require_once('controllers/AnswerController.php');
 require_once('controllers/AuthController.php');
+require_once('controllers/GameController.php');
+require_once('controllers/RankingController.php');
+require_once('controllers/UserController.php');
 require_once('Database.php');
 require_once('helpers.php');
 
@@ -42,6 +45,21 @@ switch ($uri[1]) {
 
     case 'validate':
         echo requestIsValid();
+        break;
+    case 'myGames':
+        $controller = new GameController($db->getDb(),$requestMethod);
+        $response = $controller->processRequest();
+        echo($response);
+        break;
+    case 'username':
+        $controller = new UserController($db->getDb());
+        $response = $controller->processRequest();
+        echo($response);
+        break;
+    case 'clasament':
+        $controller = new RankingController($db->getDb());
+        $response = $controller->processRequest();
+        echo($response);
         break;
 
     default:
