@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin</title>
+    <style>
+      .wrapper {
+        width: 600px;
+        margin: 0 auto;
+      }
+      table tr td:last-child {
+        width: 120px;
+      }
+    </style>
+    <script type="text/javascript" src="/admin/auth.js"></script>
+  </head>
+  <body>
+    <div>
+      <div>
+        <div>
+          <div>
+            <div>
+              <h2 class="pull-left">Question Details</h2>
+              <a href="/admin/questions/create.html">Add New Question</a>
+            </div>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Fruit</th>
+                  <th>Difficulty</th>
+                  <th>Question</th>
+                  <th>Photo</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="questionsData"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    window.onload = () => fetchAllQuestions();
+
+    function fetchAllQuestions() {
+      fetch("/admin/questions/view.php", {
+        method: "GET",
+        headers: new Headers({ Authentication: `Bearer ${token}` }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          let table = "";
+          data.forEach((element) => {
+            table += `<tr>
+                     <td>${element.id}</td>
+                     <td>${element.fruit_name}</td>
+                     <td>${element.level}</td>
+                     <td>${element.question}</td>
+                     <td>${element.photo}</td>
+                     <td><button onclick="editData(${element.id})">Edit</button></td>
+                     <td><button onclick="deleteData(${element.id})">Delete</button></td>
+                 </tr>`;
+          });
+
+          document.getElementById("questionsData").innerHTML = table;
+        });
+    }
+
+    function deleteData(id) {
+      fetch("/admin/questions/delete.php?id=" + id, {
+        method: "DELETE",
+        headers: new Headers({ Authentication: `Bearer ${token}` }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.success) {
+            alert("Error when deleting Question");
+          } else {
+            fetchAllQuestions();
+          }
+        });
+    }
+
+    function editData(id) {
+      location.assign("/admin/questions/edit.html?id=" + id);
+    }
+  </script>
+</html>

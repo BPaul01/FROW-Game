@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Question</title>
+    <style>
+      .wrapper {
+        width: 600px;
+        margin: 0 auto;
+      }
+    </style>
+    <script type="text/javascript" src="/admin/auth.js"></script>
+  </head>
+  <body>
+    <div>
+      <div>
+        <div>
+          <div>
+            <h2>Create Question</h2>
+            <form id="questionForm" onsubmit="createQuestion(event)">
+              <div>
+                <label>Fruit</label>
+                <select id="fruit_id" name="fruit_id"></select>
+              </div>
+              <div>
+                <label>Level</label>
+                <select id="level" name="level">
+                  <option value="easy">easy</option>
+                  <option value="medium">medium</option>
+                  <option value="hard">hard</option>
+                </select>
+              </div>
+              <div>
+                <label>Question</label>
+                <input type="text" name="question" />
+              </div>
+              <div>
+                <label>Photo</label>
+                <input type="file" accept="image/*" name="photo" id="photo" />
+              </div>
+              <input type="submit" class="btn btn-primary" value="Submit" />
+              <a href="/admin/questions/view.html">Cancel</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    window.onload = () => fetchAllFruitsIds();
+    function createQuestion(event) {
+      event.preventDefault();
+
+      fetch("/admin/questions/create.php", {
+        method: "POST",
+        headers: new Headers({ Authentication: `Bearer ${token}` }),
+        body: new FormData(document.getElementById("questionForm")),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.success) {
+            window.alert(data.message);
+          } else {
+            location.assign("/admin/questions/view.html");
+          }
+        });
+    }
+    function fetchAllFruitsIds() {
+      fetch("/admin/questions/fruitsIds.php", {
+        method: "GET",
+        headers: new Headers({ Authentication: `Bearer ${token}` }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          let options = "";
+          data.forEach((element) => {
+            options += `<option>${element.id}</option>`;
+          });
+
+          document.getElementById("fruit_id").innerHTML = options;
+        });
+    }
+  </script>
+</html>
