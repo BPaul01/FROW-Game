@@ -35,11 +35,11 @@
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Parolă"
+                        placeholder="Parola"
                         required
                 />
                 <br />
-                <button type="submit" class="submit button">CONTINUĂ</button>
+                <button type="submit" class="submit button">CONTINUA</button>
             </form>
         </div>
 
@@ -58,10 +58,20 @@
             method: "POST",
             body: new FormData(document.getElementById("loginForm")),
         })
-            .then((response) => response.text())
+            .then((response) => {
+                if (response.status === 401) {
+                    alert("Login incorect");
+                } else {
+                    return response.text();
+                }
+            })
             .then((token) => {
-                localStorage.setItem("token", token);
-                location.assign("/myProfile/index.html");
+                if (token.length > 0) {
+                    localStorage.setItem("token", token);
+                    location.assign("/myProfile/index.html");
+                } else {
+                    alert("Login incorect");
+                }
             });
     }
 </script>

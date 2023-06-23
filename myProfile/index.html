@@ -20,8 +20,12 @@
     </div>
 
     <div class="buttons">
-        <button class="simple-button profile" onclick = "goBackMyProfile(event)">Profilul meu</button>
-        <button class="simple-button ranking" onclick="goToClasament(event)">Clasament</button>
+        <button class="simple-button profile" onclick="goBackMyProfile(event)">
+            Profilul meu
+        </button>
+        <button class="simple-button ranking" onclick="goToClasament(event)">
+            Clasament
+        </button>
         <a class="button start-game" href="/chooseDifficulty/index.html"
         >Începe joc</a
         >
@@ -46,7 +50,9 @@
         <hr class="bold-line" />
         <div id="records"></div>
 
-        <button class="button sign-out">Deloghează-te</button>
+        <button class="button sign-out" onclick="logOutUser()">
+            Deloghează-te
+        </button>
     </div>
 </main>
 </body>
@@ -66,7 +72,6 @@
             .then((data) => {
                 console.log(data);
                 data.forEach((value, index) => {
-
                     records += `<div class="record">
               <span class="crt-nr">${index + 1}.</span>
               <span class="points">${value.score}p</span>
@@ -76,36 +81,37 @@
               <hr class="line" />`;
                 });
 
-
                 document.getElementById("records").innerHTML = records;
             });
     }
-    function setUsername(){
+
+    function setUsername() {
         fetch("/username", {
             method: "GET",
             headers: new Headers({ Authentication: `Bearer ${token}` }),
         })
             .then((response) => {
-                return (response.text());
+                return response.text();
             })
             .then((data) => {
                 document.getElementById("user").innerHTML = data;
             });
     }
-    function goBackMyProfile(event){
+    function goBackMyProfile(event) {
         event.preventDefault();
-        location.assign("/myProfile/index.html")
+        location.assign("/myProfile/index.html");
     }
-    function goToClasament(event){
+    function goToClasament(event) {
         event.preventDefault();
-        location.assign(("/RankingsPage/index.html"))
-
+        location.assign("/RankingsPage/index.html");
+    }
+    function logOutUser() {
+        localStorage.setItem("token", "");
+        location.assign("/home/index.html");
     }
     window.onload = function () {
-
         setUsername();
         printAllGamesForCurrentUser();
-
     };
 </script>
 </html>

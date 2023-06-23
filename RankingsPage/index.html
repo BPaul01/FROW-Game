@@ -74,9 +74,13 @@
                 <hr class="line">`;
                 });
 
-                records += `<button class="button sign-out">Deloghează-te</button>`;
+                records += `<button class="button sign-out" onclick="logOutUser()">Deloghează-te</button>`;
                 document.getElementById("rankings").innerHTML = records;
             });
+    }
+    function logOutUser() {
+        localStorage.setItem("token", "");
+        location.assign("/home/index.html");
     }
     window.onload = function (){
         clasament();
