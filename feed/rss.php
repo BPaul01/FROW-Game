@@ -7,9 +7,10 @@ $db->connectDB();
 
 $highScores = [];
 
-$sql = "SELECT @rank := @rank + 1 AS rank, username, points, data
-        FROM rankings, (SELECT @rank := 0) r
-        ORDER BY points DESC";
+$sql = "SELECT u.name, MAX(g.score) as score, g.data FROM `games` g
+inner join users u on u.id=g.user_id
+group BY g.user_id
+order by g.score desc;";
 
 if($result = $db->getDb()->query($sql))
     $highScores = $result->fetch_all(MYSQLI_ASSOC);
@@ -28,8 +29,8 @@ $xml .= '  <description>Latest high scores for the game</description>' . PHP_EOL
 // Iterate over each high score and generate the corresponding XML
 foreach ($highScores as $score) {
     $xml .= '  <item>' . PHP_EOL;
-    $xml .= '    <title>' . $score['username'] . ' - ' . $score['points'] . '</title>' . PHP_EOL;
-    $xml .= '    <description>' . $score['username'] . ' achieved a score of ' . $score['points'] . '</description>' . PHP_EOL;
+    $xml .= '    <title>' . $score['name'] . ' - ' . $score['score'] . '</title>' . PHP_EOL;
+    $xml .= '    <description>' . $score['name'] . ' achieved a score of ' . $score['score'] . '</description>' . PHP_EOL;
     $xml .= '  </item>' . PHP_EOL;
 }
 

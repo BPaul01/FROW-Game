@@ -13,15 +13,6 @@ class AnswerController
     public function processRequest(){
         switch ($this->requestMethod) {
             case 'GET':
-                /*
-                $body = file_get_contents('php://input');
-                $data = json_decode($body, true);
-
-                if ($data && isset($data['question_id']) && isset($data['received_answer'])) {
-                    $questionId = $data['question_id'];
-                    $receivedAnswer = $data['received_answer'];
-                */
-
                 //find the value of the params
                 $questionId = $_GET['questionId'];
                 $receivedAnswer = $_GET['receivedAnswer'];

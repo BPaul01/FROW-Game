@@ -34,6 +34,11 @@ switch ($uri[1]) {
         $controller->processRequest();
         break;
 
+    case 'randomBatchQuestions':
+        $controller = new QuestionController($db->getDb());
+        echo json_encode($controller->getRandomBatchQuestions());
+        break;
+
     case 'answers':
         $controller = new AnswerController($db->getDb(),$requestMethod);
         echo $controller->processRequest();

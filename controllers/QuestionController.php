@@ -4,6 +4,7 @@ include_once('entities/QuestionEntity.php');
 class QuestionController
 {
     private $database;
+    private static $maxQuestions = 3;
 
     public function __construct($database){
         $this->database = $database;
@@ -68,6 +69,36 @@ class QuestionController
 
         //$this->notFoundResponse();
         return null;
+    }
+
+    /**
+     * @param $difficulty
+     * @return QuestionEntity
+     */
+    public function getRandomBatchQuestions()
+    {
+        $questionsResponse = [];
+        $difficulty = $_GET['difficulty'];
+
+        while(count($questionsResponse) <= static::$maxQuestions) {
+            //read a question from the database with the same difficulty
+            $question = $this->getRandomQuestion($difficulty);
+
+            if(!isset($questionsResponse[$question->getId()])) {
+                $answers = (new AnswerController($this->database, 'GET'))->getQuestionAnswers($question->getId());
+
+                $questionsResponse[$question->getId()] = [
+                    "id" => $question->getId(),
+                    "fruit_id" => $question->getFruitId(),
+                    "level" => $question->getLevel(),
+                    "question" => $question->getQuestion(),
+                    "photo" => $question->getPhoto(),
+                    "answers" => $answers
+                ];
+            }
+        }
+
+        return $questionsResponse;
     }
 
     private function notFoundResponse()

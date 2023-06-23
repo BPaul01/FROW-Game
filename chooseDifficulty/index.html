@@ -81,31 +81,25 @@
         }
     }
 
-    async function startGameBasedOnSelectedDifficulty() {
-        localStorage.setItem('questionIndex', 0);
-        localStorage.setItem('score', 0);
+    function startGameBasedOnSelectedDifficulty() {
 
+        localStorage.setItem("questionIndex", 0);
+        localStorage.setItem("score", 0);
 
-        //load questions
-        //TODO: add 20 questions and increase the array size
-        let questions = [];
-        for (let i = 0; i < 3; i++) {
-            console.log("in for")
-            await fetch("/questions?difficulty=" + selectedDifficulty, {
-                method: "GET",
-                headers: new Headers({Authentication: `Bearer ${token}`}),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    questions.push(data)
-                })
-        }
-
-        localStorage.setItem("questions", questions);
-
-        location.assign(
-            "/gamePage/index.html?difficulty=" + selectedDifficulty
-        );
+        fetch("/randomBatchQuestions?difficulty=" + selectedDifficulty, {
+            method: "GET",
+            headers: new Headers({ Authentication: `Bearer ${token}` }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                localStorage.setItem(
+                    "questions",
+                    JSON.stringify(Object.values(data))
+                );
+                location.assign(
+                    "/gamePage/index.html?difficulty=" + selectedDifficulty
+                );
+            });
     }
 </script>
 </body>

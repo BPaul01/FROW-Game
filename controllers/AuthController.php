@@ -31,10 +31,12 @@ class AuthController
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();
                 $jwt = $this->createJWT($row['name'], $row['id'], $row['is_admin']);
+                return $jwt['body'];
             }
         }
 
-        return $jwt['body'] ?? "";
+        header('HTTP/1.1 401 Unauthorized');
+        exit();
     }
 
     public function signUpRequest()
